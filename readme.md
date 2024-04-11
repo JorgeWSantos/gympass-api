@@ -62,4 +62,7 @@ docker run --name api-gympass-pg -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PAS
 - docker logs *CONTAINER ID || NAMES*: logs a specific container
 - docker logs *CONTAINER ID || NAMES* -f: logs continually a specific container
 
+- docker compose up -d: run docker in detached mode, the logs are not showed on terminal
+- docker compose down: delete all containers
+- docker compose stop: stops containers running
 
