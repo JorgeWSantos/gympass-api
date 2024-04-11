@@ -1,0 +1,44 @@
+{
+    //eslint with typescript
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.sortMembers": "explicit"
+    },
+    "eslint.workingDirectories": [
+        "./"
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.rulers": [
+            {
+                "column": 90,
+                "color": "#ea922d"
+            }
+        ]
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/public/**": true,
+        "**/node_modules": true,
+        "**/dist/**": true
+    },
+    "explorer.sortOrder": "foldersNestsFiles",
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, .eslint*, .editorconfig, .prettierrc, tsconfig.json",
+        ".env.example": ".env*",
+        ".gitignore": "end"
+    },
+    "editor.tabSize": 2,
+    "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
+    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false
+}
