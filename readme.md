@@ -49,4 +49,17 @@ tsup - used to build .ts files
 - Extension needed: https://marketplace.visualstudio.com/items?itemName=Prisma.prisma
 - npx prisma generate: Create types automatically for tables with methods delivered by prisma
 - npm i @prisma/client: production dependency
+- npx prisma migrate dev: prisma watch the folders and create migrations based on changes at files on folder /prisma
+- npx prisma studio: open a SQL Management
+
+## Docker
+docker run --name api-gympass-pg -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=apigympass -p 5432:5432 bitnami/postgresql
+
+- docker ps: Show containers running
+- docker ps -a : Show all containers
+- docker start *CONTAINER ID || NAMES*: start a specific container
+- docker stop *CONTAINER ID || NAMES*: stop a specific container
+- docker logs *CONTAINER ID || NAMES*: logs a specific container
+- docker logs *CONTAINER ID || NAMES* -f: logs continually a specific container
+
 
