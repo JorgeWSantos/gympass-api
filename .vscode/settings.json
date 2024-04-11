@@ -40,5 +40,8 @@
     },
     "editor.tabSize": 2,
     "typescript.format.insertSpaceBeforeFunctionParenthesis": false,
-    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false
+    "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "[prisma]": {
+        "editor.formatOnSave": true
+    }
 }

@@ -42,3 +42,11 @@ tsup - used to build .ts files
 - npx tsc --init;
   - create tsconfig.json, change version of JS to es2020
 - npm i fastify
+
+### - Prisma
+- npm i prisma -D: cli, development dependency
+- npx prisma init
+- Extension needed: https://marketplace.visualstudio.com/items?itemName=Prisma.prisma
+- npx prisma generate: Create types automatically for tables with methods delivered by prisma
+- npm i @prisma/client: production dependency
+
