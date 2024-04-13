@@ -2,6 +2,9 @@
 
 Gympass style App
 
+## Node
+- version 21.6.1
+
 ## RFs (Regras funcionais)
 
 - [ ] Should be able Sign-in;
