@@ -55,6 +55,10 @@ tsup - used to build .ts files
 - npx prisma migrate dev: prisma watch the folders and create migrations based on changes at files on folder /prisma
 - npx prisma studio: open a SQL Management
 
+### Hash
+- npm i bcrypt
+- npm i --save-dev @types/bcryptjs
+
 ## Docker
 docker run --name api-gympass-pg -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PASSWORD=docker -e POSTGRESQL_DATABASE=apigympass -p 5432:5432 bitnami/postgresql
 
