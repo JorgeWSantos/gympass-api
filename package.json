@@ -7,8 +7,9 @@
     "dev": "tsx watch --env-file=.env src/server.ts",
     "build": "tsup src --out-dir build",
     "start": "node build/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "npx eslint --fix ."
+    "lint": "npx eslint --fix .",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "keywords": [],
   "author": "",
