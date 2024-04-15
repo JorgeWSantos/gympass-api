@@ -73,3 +73,10 @@ docker run --name api-gympass-pg -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PAS
 - docker compose down: delete all containers
 - docker compose stop: stops containers running
 
+## Tests
+- npm i vitest vite-tsconfig-paths -D
+- vitest: lib for test
+- vit-tsconfig-paths: lib that makes vitest undertands the configured path on typescrip
+ on this project the path is configured like '@/'
+
+
