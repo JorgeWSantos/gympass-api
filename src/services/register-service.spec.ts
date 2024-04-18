@@ -1,5 +1,5 @@
 import { expect, describe, it } from "vitest";
-import { RegisterService } from "./register";
+import { RegisterService } from "./register-service";
 import { compare } from "bcryptjs";
 import { MockUsersRepository } from "@/repositories/mocks/MockUsersRepository";
 import { UserAlreadyExistsError } from "@/errors/user-already-exists-error";
