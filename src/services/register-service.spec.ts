@@ -6,7 +6,7 @@ import { UserAlreadyExistsError } from "@/errors/user-already-exists-error";
 
 import("vite");
 
-describe("Register Use Case", () => {
+describe("Register Service", () => {
   it("should be able to create user", async () => {
     const usersRepository = new MockUsersRepository();
     const registerUseCase = new RegisterService(usersRepository);
