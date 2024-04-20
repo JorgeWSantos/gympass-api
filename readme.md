@@ -8,8 +8,8 @@ Gympass style App
 ## RFs (Regras funcionais)
 
 - [x] Should be able Sign-in;
-- [ ] Should be able Authenticate;
-- [ ] Should be able get profile of logged user;
+- [x] Should be able Authenticate;
+- [x] Should be able get profile of logged user;
 - [ ] Should be able get number of check-ins realizeds for logged user;
 - [ ] Should be able user get check-ins history;
 - [ ] Should be able user get nearby gyms;
