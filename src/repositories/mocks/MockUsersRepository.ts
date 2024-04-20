@@ -27,4 +27,14 @@ export class MockUsersRepository implements IUsersRepository {
 
     return user || null;
   }
+
+  async findById(id: string) {
+    const user = this.items.find((i) => i.id === id);
+
+    if (!user) {
+      return null;
+    }
+
+    return user || null;
+  }
 }
