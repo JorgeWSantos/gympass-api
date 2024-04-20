@@ -1,15 +1,19 @@
 import { MockUsersRepository } from "@/repositories/mocks/MockUsersRepository";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import { AuthenticateService } from "./authentication-service";
-import { InvalidCredentialsError } from "@/errors/invalid-credentials-error";
+import { InvalidCredentialsError } from "@/services/errors/invalid-credentials-error";
 import { hash } from "bcryptjs";
 
-describe("Authenticate Service", () => {
-  it("should be able to authenticate user", async () => {
-    const usersRepository = new MockUsersRepository();
-    // sut system under tests
-    const sut = new AuthenticateService(usersRepository);
+let usersRepository: MockUsersRepository;
+let sut: AuthenticateService; // sut system under tests
 
+describe("Authenticate Service", () => {
+  beforeEach(() => {
+    usersRepository = new MockUsersRepository();
+    sut = new AuthenticateService(usersRepository);
+  });
+
+  it("should be able to authenticate user", async () => {
     const user = {
       name: "johndoe",
       email: "jhondoe@gmail.com",
@@ -31,10 +35,6 @@ describe("Authenticate Service", () => {
   });
 
   it("shouldn't be possible authenticate user with wrong email", async () => {
-    const usersRepository = new MockUsersRepository();
-
-    const sut = new AuthenticateService(usersRepository);
-
     await expect(() =>
       sut.execute({
         email: "wrongemail@gmail.com",
@@ -44,8 +44,6 @@ describe("Authenticate Service", () => {
   });
 
   it("shouldn't be possible authenticate user with wrong password", async () => {
-    const usersRepository = new MockUsersRepository();
-
     const user = {
       name: "johndoe",
       email: "jhondoe@gmail.com",
@@ -57,8 +55,6 @@ describe("Authenticate Service", () => {
       name: user.name,
       password_hash: await hash(user.password, 6),
     });
-
-    const sut = new AuthenticateService(usersRepository);
 
     await expect(() =>
       sut.execute({
