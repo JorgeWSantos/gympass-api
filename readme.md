@@ -14,15 +14,15 @@ Gympass style App
 - [ ] Should be able user get check-ins history;
 - [ ] Should be able user get nearby gyms;
 - [ ] Should be able user get gyms by name;
-- [ ] Should be able user realize check-in on one gym;
+- [x] Should be able user realize check-in on a gym;
 - [ ] Should be able validate check-in of an user;
 - [ ] Should be able register a gym
 
 ## RNs (Regras de negócios)
 
 - [x] User Should'nt register an email duplicated;
-- [ ] User Should'nt do check-in on 2 gyms in the same day;
-- [ ] User Should'nt do check-in if he was more than (100m) away from academy;
+- [x] User Should'nt do check-in on 2 gyms in the same day;
+- [x] User Should'nt do check-in if he was more than (100m) away from academy;
 - [ ] Check-in can only be validated whitin 20 minutes after being created;
 - [ ] Check-in can only be validated by admins;
 - [ ] Gym can only be registered by admins;
@@ -80,5 +80,8 @@ docker run --name api-gympass-pg -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PAS
  on this project the path is configured like '@/'
 - npm i -D @vitest/ui: UI for tests
 - npm i -D @vitest/coverage-v8: Generates coverage file
+
+## Dates
+- npm i dayjs
 
 

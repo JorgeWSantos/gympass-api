@@ -43,5 +43,5 @@
     "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
     "[prisma]": {
         "editor.formatOnSave": true
-    }
+    },
 }
