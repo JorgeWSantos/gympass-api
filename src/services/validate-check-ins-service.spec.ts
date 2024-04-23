@@ -1,7 +1,8 @@
 import { CheckinRepositoryMock } from "@/repositories/mocks/check-in-repository-mock";
-import { beforeEach, describe, expect, it, afterEach } from "vitest";
+import { beforeEach, describe, expect, it, afterEach, vi } from "vitest";
 import { ValidateCheckInService } from "./validate-check-ins-service";
 import ResourceNotFoundError from "./errors/resource-not-found-error";
+import { LateCheckInValidationError } from "./errors/late-check-in-validation-error";
 
 let checkInRepository: CheckinRepositoryMock;
 let sut: ValidateCheckInService; // sut system under tests
@@ -11,11 +12,11 @@ describe("Validate Check In Service", () => {
     checkInRepository = new CheckinRepositoryMock();
     sut = new ValidateCheckInService(checkInRepository);
 
-    // vi.useFakeTimers();
+    vi.useFakeTimers();
   });
 
   afterEach(() => {
-    // vi.useRealTimers();
+    vi.useRealTimers();
   });
 
   it("should be able to validate check-in", async () => {
@@ -34,5 +35,22 @@ describe("Validate Check In Service", () => {
     await expect(() =>
       sut.execute({ checkInId: "non-exist-id" }),
     ).rejects.toBeInstanceOf(ResourceNotFoundError);
+  });
+
+  it("should *not* be able to validate check-in after 20 minutes of its creation", async () => {
+    vi.setSystemTime(new Date(2023, 0, 1, 13, 40));
+
+    const checkInCreated = await checkInRepository.create({
+      gym_id: "gym-1",
+      user_id: "user-1",
+    });
+
+    const twentyOneMinutesInMiliseconds = 1000 * 60 * 21;
+
+    vi.advanceTimersByTime(twentyOneMinutesInMiliseconds);
+
+    await expect(() =>
+      sut.execute({ checkInId: checkInCreated.id }),
+    ).rejects.toBeInstanceOf(LateCheckInValidationError);
   });
 });
