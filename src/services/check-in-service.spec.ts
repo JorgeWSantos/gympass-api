@@ -2,25 +2,28 @@ import { MockCheckinRepository } from "@/repositories/mocks/MockCheckInRepositor
 import { beforeEach, describe, expect, it, vi, afterEach } from "vitest";
 import { CheckInService } from "./check-in-service";
 import { MockGymRepository } from "@/repositories/mocks/MockGymRepository";
-import { Decimal } from "@prisma/client/runtime/library";
+import { MaxNumbersOfCheckinsError } from "./errors/max-number-of-check-ins-error";
+import { MaxDistanceError } from "./errors/max-distance-error";
 
 let checkInRepository: MockCheckinRepository;
 let gymRepository: MockGymRepository;
 let sut: CheckInService; // sut system under tests
 
 describe("Check In Service", () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     checkInRepository = new MockCheckinRepository();
     gymRepository = new MockGymRepository();
     sut = new CheckInService(checkInRepository, gymRepository);
-    gymRepository.items.push({
+
+    await gymRepository.create({
       id: "gym-1",
       description: "gym js to learn",
       phone: "1234",
       title: "gym js",
-      latitude: new Decimal(-24.0086585),
-      longitude: new Decimal(-48.3489453),
+      latitude: -24.0086585,
+      longitude: -48.3489453,
     });
+
     vi.useFakeTimers();
   });
 
@@ -56,7 +59,7 @@ describe("Check In Service", () => {
         userLatitude: -24.0086585,
         userLongitude: -48.3489453,
       }),
-    ).rejects.toBeInstanceOf(Error);
+    ).rejects.toBeInstanceOf(MaxNumbersOfCheckinsError);
   });
 
   it("should be able to create check-in twice in different days", async () => {
@@ -82,13 +85,13 @@ describe("Check In Service", () => {
   });
 
   it("shouldn't be able to create check-in on a distant gym", async () => {
-    gymRepository.items.push({
+    await gymRepository.create({
       id: "gym-2",
       description: "gym 2 js to learn",
       phone: "1234",
       title: "gym 2 js",
-      latitude: new Decimal(-23.9120139),
-      longitude: new Decimal(-48.1978899),
+      latitude: -23.9120139,
+      longitude: -48.1978899,
     });
 
     await expect(() =>
@@ -98,6 +101,6 @@ describe("Check In Service", () => {
         userLatitude: -24.0086585,
         userLongitude: -48.3489453,
       }),
-    ).rejects.toBeInstanceOf(Error);
+    ).rejects.toBeInstanceOf(MaxDistanceError);
   });
 });
