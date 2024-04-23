@@ -1,6 +1,6 @@
 import { UsersRepositoryMock } from "@/repositories/mocks/user-repository-mock";
 import { beforeEach, describe, expect, it } from "vitest";
-import { AuthenticateService } from "./authentication-service";
+import { AuthenticateService } from "./authenticate-service";
 import { InvalidCredentialsError } from "@/services/errors/invalid-credentials-error";
 import { hash } from "bcryptjs";
 
