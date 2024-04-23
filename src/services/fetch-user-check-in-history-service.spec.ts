@@ -1,6 +1,6 @@
 import { CheckinRepositoryMock } from "@/repositories/mocks/check-in-repository-mock";
 import { beforeEach, describe, expect, it } from "vitest";
-import { FetchUserCheckInHistoryService } from "./fetch-user-check-in-history";
+import { FetchUserCheckInHistoryService } from "./fetch-user-check-in-history-service";
 
 let checkInRepository: CheckinRepositoryMock;
 let sut: FetchUserCheckInHistoryService; // sut system under tests

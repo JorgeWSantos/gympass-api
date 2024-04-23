@@ -1,6 +1,6 @@
 import { CheckinRepositoryMock } from "@/repositories/mocks/check-in-repository-mock";
 import { beforeEach, describe, expect, it } from "vitest";
-import { GetUserMetricsService } from "./get-user-metrics";
+import { GetUserMetricsService } from "./get-user-metrics-service";
 
 let checkInRepository: CheckinRepositoryMock;
 let sut: GetUserMetricsService; // sut system under tests
