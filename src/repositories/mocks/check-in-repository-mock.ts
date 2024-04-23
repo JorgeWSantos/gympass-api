@@ -45,4 +45,8 @@ export class CheckinRepositoryMock implements ICheckInRepository {
 
     return checkOnSameDate;
   }
+
+  async countByUserId(user_id: string) {
+    return this.items.filter((c) => c.user_id === user_id).length;
+  }
 }
