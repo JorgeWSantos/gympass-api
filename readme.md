@@ -13,7 +13,7 @@ Gympass style App
 - [ ] Should be able get number of check-ins realizeds for logged user;
 - [x] Should be able user get check-ins history;
 - [ ] Should be able user get nearby gyms;
-- [ ] Should be able user get gyms by name;
+- [x] Should be able user get gyms by name;
 - [x] Should be able user realize check-in on a gym;
 - [ ] Should be able validate check-in of an user;
 - [x] Should be able register a gym

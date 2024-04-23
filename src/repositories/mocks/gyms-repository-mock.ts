@@ -29,4 +29,14 @@ export class GymRepositoryMock implements IGymRepository {
 
     return gym || null;
   }
+
+  async searchMany(query: string, page: number) {
+    const totalPages = 20;
+
+    const gym = this.items
+      .filter((i) => i.title.includes(query))
+      .slice((page - 1) * totalPages, page * totalPages);
+
+    return gym;
+  }
 }
