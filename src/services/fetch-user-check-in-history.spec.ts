@@ -39,7 +39,7 @@ describe("Check In Service", () => {
     ]);
   });
 
-  it.only("should be able to fetch *paginated* check-ins history", async () => {
+  it("should be able to fetch *paginated* check-ins history", async () => {
     for (let i = 1; i <= 22; i++) {
       await checkInRepository.create({
         gym_id: `gym-${i}`,

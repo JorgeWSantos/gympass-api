@@ -31,14 +31,10 @@ describe("Get User Metrics Service", () => {
       userId: "user-1",
     });
 
-    expect(checkInsCount).toHaveLength(2);
-    expect(checkInsCount).toEqual([
-      expect.objectContaining({ gym_id: "gym-1" }),
-      expect.objectContaining({ gym_id: "gym-2" }),
-    ]);
+    expect(checkInsCount).toEqual(2);
   });
 
-  it.only("should be able show user-made checkins", async () => {
+  it("should be able show user-made checkins", async () => {
     for (let i = 1; i <= 22; i++) {
       await checkInRepository.create({
         gym_id: `gym-${i}`,
