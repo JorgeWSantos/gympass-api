@@ -1,15 +1,15 @@
 import { expect, describe, it, beforeEach } from "vitest";
-import { MockGymRepository } from "@/repositories/mocks/gyms-repository-mock";
+import { GymRepositoryMock } from "@/repositories/mocks/gyms-repository-mock";
 import { CreateGymService } from "./create-gym-service";
 
 import("vite");
 
-let gymsRepository: MockGymRepository;
+let gymsRepository: GymRepositoryMock;
 let sut: CreateGymService;
 
 describe("Create Gym Service", () => {
   beforeEach(() => {
-    gymsRepository = new MockGymRepository();
+    gymsRepository = new GymRepositoryMock();
     sut = new CreateGymService(gymsRepository);
   });
 

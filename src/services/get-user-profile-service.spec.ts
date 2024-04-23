@@ -1,15 +1,15 @@
-import { MockUsersRepository } from "@/repositories/mocks/user-repository-mock";
+import { UsersRepositoryMock } from "@/repositories/mocks/user-repository-mock";
 import { beforeEach, describe, expect, it } from "vitest";
 import { GetUserProfileService } from "./get-user-profile-service";
 import { hash } from "bcryptjs";
 import ResourceNotFoundError from "./errors/resource-not-found-error";
 
-let usersRepository: MockUsersRepository;
+let usersRepository: UsersRepositoryMock;
 let sut: GetUserProfileService; // sut system under tests
 
 describe("Get User Profile", () => {
   beforeEach(() => {
-    usersRepository = new MockUsersRepository();
+    usersRepository = new UsersRepositoryMock();
     sut = new GetUserProfileService(usersRepository);
   });
 
