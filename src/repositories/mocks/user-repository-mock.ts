@@ -2,7 +2,7 @@ import { Prisma, User } from "@prisma/client";
 import { IUsersRepository } from "../iusers-repository";
 import { randomUUID } from "node:crypto";
 
-export class MockUsersRepository implements IUsersRepository {
+export class UsersRepositoryMock implements IUsersRepository {
   public items: User[] = [];
 
   async create(data: Prisma.UserCreateInput) {

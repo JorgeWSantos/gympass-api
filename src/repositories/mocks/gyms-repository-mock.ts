@@ -2,7 +2,7 @@ import { Gym, Prisma } from "@prisma/client";
 import { IGymRepository } from "../igym-repository";
 import { randomUUID } from "node:crypto";
 
-export class MockGymRepository implements IGymRepository {
+export class GymRepositoryMock implements IGymRepository {
   public items: Gym[] = [];
 
   async create(data: Prisma.GymCreateInput) {

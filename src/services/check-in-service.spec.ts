@@ -1,18 +1,18 @@
-import { MockCheckinRepository } from "@/repositories/mocks/MockCheckInRepository";
+import { CheckinRepositoryMock } from "@/repositories/mocks/check-in-repository-mock";
 import { beforeEach, describe, expect, it, vi, afterEach } from "vitest";
 import { CheckInService } from "./check-in-service";
-import { MockGymRepository } from "@/repositories/mocks/MockGymRepository";
+import { GymRepositoryMock } from "@/repositories/mocks/gyms-repository-mock";
 import { MaxNumbersOfCheckinsError } from "./errors/max-number-of-check-ins-error";
 import { MaxDistanceError } from "./errors/max-distance-error";
 
-let checkInRepository: MockCheckinRepository;
-let gymRepository: MockGymRepository;
+let checkInRepository: CheckinRepositoryMock;
+let gymRepository: GymRepositoryMock;
 let sut: CheckInService; // sut system under tests
 
 describe("Check In Service", () => {
   beforeEach(async () => {
-    checkInRepository = new MockCheckinRepository();
-    gymRepository = new MockGymRepository();
+    checkInRepository = new CheckinRepositoryMock();
+    gymRepository = new GymRepositoryMock();
     sut = new CheckInService(checkInRepository, gymRepository);
 
     await gymRepository.create({

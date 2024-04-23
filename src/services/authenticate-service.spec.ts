@@ -1,15 +1,15 @@
-import { MockUsersRepository } from "@/repositories/mocks/MockUsersRepository";
+import { UsersRepositoryMock } from "@/repositories/mocks/user-repository-mock";
 import { beforeEach, describe, expect, it } from "vitest";
 import { AuthenticateService } from "./authentication-service";
 import { InvalidCredentialsError } from "@/services/errors/invalid-credentials-error";
 import { hash } from "bcryptjs";
 
-let usersRepository: MockUsersRepository;
+let usersRepository: UsersRepositoryMock;
 let sut: AuthenticateService; // sut system under tests
 
 describe("Authenticate Service", () => {
   beforeEach(() => {
-    usersRepository = new MockUsersRepository();
+    usersRepository = new UsersRepositoryMock();
     sut = new AuthenticateService(usersRepository);
   });
 

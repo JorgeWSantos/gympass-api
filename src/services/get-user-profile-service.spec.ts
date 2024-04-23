@@ -1,4 +1,4 @@
-import { MockUsersRepository } from "@/repositories/mocks/MockUsersRepository";
+import { MockUsersRepository } from "@/repositories/mocks/user-repository-mock";
 import { beforeEach, describe, expect, it } from "vitest";
 import { GetUserProfileService } from "./get-user-profile-service";
 import { hash } from "bcryptjs";

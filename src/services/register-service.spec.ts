@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeEach } from "vitest";
 import { RegisterService } from "./register-service";
 import { compare } from "bcryptjs";
-import { MockUsersRepository } from "@/repositories/mocks/MockUsersRepository";
+import { MockUsersRepository } from "@/repositories/mocks/user-repository-mock";
 import { UserAlreadyExistsError } from "@/services/errors/user-already-exists-error";
 
 import("vite");
