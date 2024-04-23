@@ -14,7 +14,7 @@ interface RegisterServiceResponse {
 }
 
 export class RegisterService {
-  constructor(private usersRepository: IUsersRepository) { }
+  constructor(private usersRepository: IUsersRepository) {}
 
   async execute({
     email,

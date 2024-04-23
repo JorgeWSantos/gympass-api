@@ -14,7 +14,7 @@ interface CreateGymServiceResponse {
 }
 
 export class CreateGymService {
-  constructor(private gymRepository: IGymRepository) { }
+  constructor(private gymRepository: IGymRepository) {}
 
   async execute({
     title,
