@@ -6,6 +6,22 @@ import dayjs from "dayjs";
 export class CheckinRepositoryMock implements ICheckInRepository {
   public items: Checkin[] = [];
 
+  async findById(check_in_id: string) {
+    const checkIn = this.items.find((c) => c.id === check_in_id);
+
+    return checkIn ?? null;
+  }
+
+  async save(check_in: Checkin) {
+    const checkInIndex = this.items.findIndex((c) => c.id === check_in.id);
+
+    if (checkInIndex >= 0) {
+      this.items[checkInIndex] = check_in;
+    }
+
+    return check_in;
+  }
+
   async create(data: Prisma.CheckinUncheckedCreateInput) {
     const checkIn = {
       id: randomUUID(),
