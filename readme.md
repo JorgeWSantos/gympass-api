@@ -11,12 +11,12 @@ Gympass style App
 - [x] Should be able Authenticate;
 - [x] Should be able get profile of logged user;
 - [ ] Should be able get number of check-ins realizeds for logged user;
-- [ ] Should be able user get check-ins history;
+- [x] Should be able user get check-ins history;
 - [ ] Should be able user get nearby gyms;
 - [ ] Should be able user get gyms by name;
 - [x] Should be able user realize check-in on a gym;
 - [ ] Should be able validate check-in of an user;
-- [ ] Should be able register a gym
+- [x] Should be able register a gym
 
 ## RNs (Regras de negócios)
 
@@ -31,7 +31,7 @@ Gympass style App
 
 - [x] User password needs to be encrypted;
 - [x] The database needs to be persisted on PostgreSQL;
-- [ ] All lists of data needs to be paginated with 20 itens by page;
+- [x] All lists of data needs to be paginated with 20 itens by page;
 - [ ] User must be identified by JWT;
 
 ## Libs

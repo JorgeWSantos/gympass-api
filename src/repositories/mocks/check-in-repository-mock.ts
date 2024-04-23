@@ -20,8 +20,11 @@ export class CheckinRepositoryMock implements ICheckInRepository {
     return checkIn;
   }
 
-  async findManyById(user_id: string) {
-    return this.items.filter((c) => c.user_id === user_id);
+  async findManyById(user_id: string, page: number) {
+    const totalPages = 20;
+    return this.items
+      .filter((c) => c.user_id === user_id)
+      .slice((page - 1) * totalPages, page * totalPages);
   }
 
   async findByUserIdOnDate(user_id: string, date: Date) {
