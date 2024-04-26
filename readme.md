@@ -85,3 +85,6 @@ docker run --name api-gympass-pg -e POSTGRESQL_USERNAME=docker -e POSTGRESQL_PAS
 - npm i dayjs
 
 
+## JWT
+- npm install @fastify/jwt
+
