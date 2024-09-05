@@ -6,8 +6,8 @@ interface SearchGymServiceRequest {
   page: number;
 }
 
-interface SearchGymServiceResponse {
-  gym: Gym[];
+interface SearchGymsServiceResponse {
+  gyms: Gym[];
 }
 
 export class SearchGymService {
@@ -16,9 +16,9 @@ export class SearchGymService {
   async execute({
     query,
     page,
-  }: SearchGymServiceRequest): Promise<SearchGymServiceResponse> {
-    const gym = await this.gymRepository.searchMany(query, page);
+  }: SearchGymServiceRequest): Promise<SearchGymsServiceResponse> {
+    const gyms = await this.gymRepository.searchMany(query, page);
 
-    return { gym };
+    return { gyms };
   }
 }

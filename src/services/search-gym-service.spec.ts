@@ -1,6 +1,6 @@
 import { expect, describe, it, beforeEach } from "vitest";
 import { GymRepositoryMock } from "@/repositories/mocks/gyms-repository-mock";
-import { SearchGymService } from "./search-gym-service";
+import { SearchGymService } from "./search-gyms-service";
 
 let gymsRepository: GymRepositoryMock;
 let sut: SearchGymService;
