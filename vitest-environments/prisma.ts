@@ -1,30 +1,44 @@
+import { PrismaClient } from "@prisma/client";
+import "dotenv/config";
+import { execSync } from "node:child_process";
+import { randomUUID } from "node:crypto";
 import type { Environment } from "vitest";
+
+const prisma = new PrismaClient();
+
+// postgresql://docker:docker@localhost:5432/apigympass?schema=public
+
+function generateDatabaseURL(schema: string) {
+  if (!process.env.DATABASE_URL) {
+    throw new Error("Please provide a DATABASE_URL environment variable.");
+  }
+
+  const url = new URL(process.env.DATABASE_URL);
+
+  url.searchParams.set("schema", schema);
+
+  return url.toString();
+}
 
 export default <Environment>{
   name: "custom",
   transformMode: "ssr",
-  // optional - only if you support "experimental-vm" pool
-  // async setupVM() {
-  //   const vm = await import("node:vm");
-  //   const context = vm.createContext();
-  //   return {
-  //     getVmContext() {
-  //       return context;
-  //     },
-  //     teardown() {
-  //       console.log("teardown2");
-
-  //       // called after all tests with this env have been run
-  //     },
-  //   };
-  // },
   async setup() {
-    console.log("test");
-    // custom setup
+    const schema = randomUUID();
+
+    const databaseURL = generateDatabaseURL(schema);
+
+    process.env.DATABASE_URL = databaseURL;
+
+    execSync("npx prisma migrate deploy");
+
     return {
       async teardown() {
-        // called after all tests with this env have been run
-        console.log("teardown");
+        await prisma.$executeRawUnsafe(
+          `DROP SCHEMA IF EXISTS "${schema}" CASCADE`,
+        );
+
+        await prisma.$disconnect();
       },
     };
   },
