@@ -16,7 +16,7 @@ export const create = async (request: FastifyRequest, reply: FastifyReply) => {
     }),
   });
 
-  const { gymId } = createCheckInParamsSchema.parse(request.query);
+  const { gymId } = createCheckInParamsSchema.parse(request.params);
   const { latitude, longitude } = createCheckInBodySchema.parse(request.body);
 
   const service = makeCheckInService();
@@ -24,8 +24,8 @@ export const create = async (request: FastifyRequest, reply: FastifyReply) => {
   await service.execute({
     gymId,
     userId: request.user.sub,
-    userLatitude: latitude,
-    userLongitude: longitude,
+    latitude,
+    longitude,
   });
 
   return reply.status(201).send();

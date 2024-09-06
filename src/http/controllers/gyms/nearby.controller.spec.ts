@@ -22,7 +22,7 @@ describe("Nearby Gyms (e2e)", () => {
         description: "Near Gym",
         latitude: -24.0036205,
         longitude: -48.3474345,
-        phone: "15998320554",
+        phone: "15990554",
         title: "Javascript Gym",
       });
 
@@ -33,7 +33,7 @@ describe("Nearby Gyms (e2e)", () => {
         description: "Far Gym",
         latitude: -23.8668289,
         longitude: -48.1706125,
-        phone: "15998320554",
+        phone: "159983254",
         title: "Typescript Gym",
       });
 

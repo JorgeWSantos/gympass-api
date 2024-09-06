@@ -9,8 +9,8 @@ import { MaxDistanceError } from "./errors/max-distance-error";
 interface CheckInServiceRequest {
   userId: string;
   gymId: string;
-  userLatitude: number;
-  userLongitude: number;
+  latitude: number;
+  longitude: number;
 }
 
 interface CheckInServiceResponse {
@@ -21,13 +21,13 @@ export class CheckInService {
   constructor(
     private checkInRepository: ICheckInRepository,
     private gymRepository: IGymRepository,
-  ) {}
+  ) { }
 
   async execute({
     userId,
     gymId,
-    userLatitude,
-    userLongitude,
+    latitude,
+    longitude,
   }: CheckInServiceRequest): Promise<CheckInServiceResponse> {
     const gym = await this.gymRepository.findById(gymId);
 
@@ -37,7 +37,7 @@ export class CheckInService {
 
     // calculate distance between user and gym
     const distance = getDistanceBetweenCoordinates(
-      { latitude: userLatitude, longitude: userLongitude },
+      { latitude, longitude },
       {
         latitude: gym.latitude.toNumber(),
         longitude: gym.longitude.toNumber(),
