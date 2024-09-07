@@ -15,6 +15,7 @@ jobs:
           node-version: 18
           # cache: 'npm'
 
+      - .run: npm install --package-lock-only
       - run: npm ci
 
       - run: npm run test
