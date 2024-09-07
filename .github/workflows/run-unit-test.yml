@@ -17,4 +17,6 @@ jobs:
 
       - run: npm i -y
 
+      - run: npm i @rollup/rollup-linux-x64-gnu
+
       - run: npm run test
