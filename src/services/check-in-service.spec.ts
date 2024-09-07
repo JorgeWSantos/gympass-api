@@ -35,8 +35,8 @@ describe("Check In Service", () => {
     const { checkIn } = await sut.execute({
       gymId: "gym-1",
       userId: "user-1",
-      userLatitude: -24.0086585,
-      userLongitude: -48.3489453,
+      latitude: -24.0086585,
+      longitude: -48.3489453,
     });
 
     expect(checkIn.id).toEqual(expect.any(String));
@@ -48,16 +48,16 @@ describe("Check In Service", () => {
     await sut.execute({
       gymId: "gym-1",
       userId: "user-1",
-      userLatitude: -24.0086585,
-      userLongitude: -48.3489453,
+      latitude: -24.0086585,
+      longitude: -48.3489453,
     });
 
     await expect(() =>
       sut.execute({
         gymId: "gym-1",
         userId: "user-1",
-        userLatitude: -24.0086585,
-        userLongitude: -48.3489453,
+        latitude: -24.0086585,
+        longitude: -48.3489453,
       }),
     ).rejects.toBeInstanceOf(MaxNumbersOfCheckinsError);
   });
@@ -98,8 +98,8 @@ describe("Check In Service", () => {
       sut.execute({
         gymId: "gym-2",
         userId: "user-1",
-        userLatitude: -24.0086585,
-        userLongitude: -48.3489453,
+        latitude: -24.0086585,
+        longitude: -48.3489453,
       }),
     ).rejects.toBeInstanceOf(MaxDistanceError);
   });

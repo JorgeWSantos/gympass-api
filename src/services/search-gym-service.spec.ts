@@ -28,10 +28,10 @@ describe("Search Gym Service", () => {
       title: "gimmer",
     });
 
-    const { gym } = await sut.execute({ query: "gym", page: 1 });
+    const { gyms } = await sut.execute({ query: "gym", page: 1 });
 
-    expect(gym).toHaveLength(1);
-    expect(gym).toEqual([expect.objectContaining({ title: "gym" })]);
+    expect(gyms).toHaveLength(1);
+    expect(gyms).toEqual([expect.objectContaining({ title: "gym" })]);
   });
 
   it("should be able to search a gym by page", async () => {
@@ -45,10 +45,10 @@ describe("Search Gym Service", () => {
       });
     }
 
-    const { gym } = await sut.execute({ query: "gym", page: 2 });
+    const { gyms } = await sut.execute({ query: "gym", page: 2 });
 
-    expect(gym).toHaveLength(2);
-    expect(gym).toEqual([
+    expect(gyms).toHaveLength(2);
+    expect(gyms).toEqual([
       expect.objectContaining({ title: "gym-21" }),
       expect.objectContaining({ title: "gym-22" }),
     ]);
