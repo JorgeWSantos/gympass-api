@@ -68,8 +68,8 @@ describe("Check In Service", () => {
     await sut.execute({
       gymId: "gym-1",
       userId: "user-1",
-      userLatitude: -24.0086585,
-      userLongitude: -48.3489453,
+      latitude: -24.0086585,
+      longitude: -48.3489453,
     });
 
     vi.setSystemTime(new Date(2022, 0, 21, 8, 0, 0));
@@ -77,8 +77,8 @@ describe("Check In Service", () => {
     const { checkIn } = await sut.execute({
       gymId: "gym-1",
       userId: "user-1",
-      userLatitude: -24.0086585,
-      userLongitude: -48.3489453,
+      latitude: -24.0086585,
+      longitude: -48.3489453,
     });
 
     await expect(checkIn.id).toEqual(expect.any(String));
